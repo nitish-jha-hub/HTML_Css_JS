@@ -1,0 +1,14 @@
+#resume{
+    color: rgb(23, 27, 240);
+}
+
+.heading{
+    color: rgb(30, 30, 231);
+}
+.container{
+    margin: 21px;
+    border: dotted;
+    border-color: rgb(144, 144, 153);
+    padding: 11px;
+    border-radius: 15px;
+}

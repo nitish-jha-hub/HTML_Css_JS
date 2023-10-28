@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>HTML Calculator</title>
+
+	<style>
+		table {
+			border: 3px dotted black;
+			border-radius: 5px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		input[type="button"] {
+			width: 100%;
+			padding: 10px 20px;
+			background-color: rgb(202, 119, 37);
+			color: rgb(4, 26, 226);
+			font-size: 24px;
+			font-weight: bold;
+			border: none;
+			border-radius: 5px;
+		}
+
+		#result {
+			padding: 20px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<table id="calcu">
+		<tr>
+			<td colspan="3">
+				<input type="text" id="result">
+			</td>
+			<td><input onclick="clearScreen()" type="button" value="c"></td>
+		</tr>
+
+		<tr>
+			<td><input onclick='display(value)' type="button" value="1"></td>
+			<td><input onclick={display(value)} type="button" value="2"></td>
+
+			<td><input onclick="display('3')" type="button" value="3"></td>
+			<td><input onclick="display('/')" type="button" value="/"></td>
+		</tr>
+		<tr>
+			<td><input onclick="display('4')" type="button" value="4"></td>
+			<td><input onclick="display('5')" type="button" value="5"></td>
+			<td><input onclick="display('6')" type="button" value="6"></td>
+			<td><input onclick="display(value)" type="button" value="*"></td>
+		</tr>
+		<tr>
+			<td><input onclick="display('7')" type="button" value="7"></td>
+			<td><input onclick="display('8')" type="button" value="8"></td>
+			<td><input onclick="display('9')" type="button" value="9"></td>
+			<td><input onclick="display('-')" type="button" value="-"></td>
+		</tr>
+		<tr>
+			<td><input onclick="display('0')" type="button" value="0"></td>
+			<td><input onclick="display('.')" type="button" value="."></td>
+			<td><input onclick={calculate()} type="button" value="="></td>
+			<!-- recheck needed in calculate function -->
+			<td><input onclick="display('+')" type="button" value="+"></td>
+		</tr>
+	</table>
+
+	<script>
+		function clearScreen() {
+			document.getElementById("result").value = "";
+		}
+
+		function display(value) {
+			document.getElementById("result").value += value;
+		}
+
+		function calculate() {
+			var p = document.getElementById("result").value;
+			var q = eval(p);
+			document.getElementById("result").value = q;
+		}
+
+	</script>
+
+</body>
+
+</html>
