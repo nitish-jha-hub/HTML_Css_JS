@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example using arrow function </title>
+</head>
+
+<body>
+    <h1>JSON Example</h1>
+    <br><br>
+    <table id="tble"></table>
+    <script>
+
+        // In this methods we use asynchronous Arrow function instead of normal javascript function to fetch data from server
+        const url = "https://dummyjson.com/products/category/smartphones";
+        const getapi = async () => {
+            let response = await fetch(url);
+            let data = await response.json();
+            let productdata = data.products;
+            show(productdata);
+        }
+
+        //Now call api
+        getapi(url);
+
+        //add table rows in frontend using "for-of" loop
+        function show(productdata) {
+            let tab = '<tr><th class="text-center">ID</th> <th class="text-center">Name</th> <th class="text-center"> Description</th>';
+            for (let r of productdata) {
+                tab += '<tr>';
+                tab += '<td>' + r.id + '</td>';
+                tab += '<td>' + r.title + '</td>';
+                tab += '<td>' + r.description + '</td>';
+            }
+            document.getElementById("tble").innerHTML = tab;
+        }
+    </script>
+</body>
+
+</html>

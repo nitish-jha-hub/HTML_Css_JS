@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+</head>
+<body>
+    <h1>JSON Example</h1>
+    <br><br>
+    <table id="tble"></table>
+    <script>
+        const url="https://jsonplaceholder.typicode.com/users";
+        
+        // async function getapi(apiaddress){
+        //     let response = await fetch(apiaddress);
+        //     let data = await response.json();
+        //     console.log(data);
+        //     // show(data);
+        // }
+
+        (async url => {
+            console.log(url);
+            let data = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+            })
+            let response = await data.json()
+            console.log(response);
+        })(url);
+
+        
+        // function show(data){
+
+        //     let tab ='<tr><th class="text-center">ID</th> <th class="text-center>Name</th> <th class="text-center> Email</th>"';
+        //     for(let r of data){
+        //         tab+='<tr>';
+        //         tab+='<td>'+r.id+'</td>';
+        //         tab+='<td>'+r.name+'</td>';
+        //         tab+='<td>'+r.email+'</td>';
+        //     }
+        // }
+        // document.getElementById("tble").innerHTML=tab;
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Employee Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="abcd">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>fetch("https://jsonplaceholder.typicode.com/users").then(
+            res => {
+                res.json().then(
+                    data => {
+                        console.log(data);
+                        if (data.length > 0) {
+
+                            var show_in_f_end = "";
+                            data.forEach((serverData) => {
+                                show_in_f_end += "<tr>";
+                                show_in_f_end += "<td>" + serverData.id + "</td>";
+                                show_in_f_end += "<td>" + serverData.name + "</td>";
+                                show_in_f_end += "<td>" + serverData.email + "</td>";
+                            });
+                            document.getElementById('abcd').innerHTML = show_in_f_end;
+                        }
+                    }
+                )
+            }
+        )
+    </script>
+</body>
+
+</html>

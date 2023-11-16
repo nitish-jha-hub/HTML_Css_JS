@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+</head>
+<body>
+    <h1>JSON Example</h1>
+    <br><br>
+    <table id="tble"></table>
+    <script>
+        const url="https://dummyjson.com/products/category/smartphones";
+        async function getapi(url){
+            let response=await fetch(url);
+            var data=await response.json();
+            console.log(data);
+            show(data);
+        }
+        function show(data){
+            let tab='<tr><th class="text-center">ID</th> <th class="text-center>Name</th> <th class="text-center> Email</th>"';
+            for(let r of data){
+                tab+='<tr>';
+                tab+='<td>'+r.id+'</td>';
+                tab+='<td>'+r.name+'</td>';
+                tab+='<td>'+r.email+'</td>';
+            }
+        }
+        document.getElementById("tble").innerHTML=tab;
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch data from server using js function: json</title>
+</head>
+
+<body>
+    <h1>JSON Example</h1>
+    <br><br>
+    <table id="tble"></table>
+
+    <script>
+        // 1st step: first we have to create async javascipt function to get data from server in JSON format
+        const url = 'https://dummyjson.com/products/category/smartphones';
+        async function getapi(url) {
+            let response = await fetch(url);
+            let data = await response.json();
+            let productdata = data.products;
+            show(productdata);
+        }
+
+        //2nd step: Now we have to call "getapi" functions with arguments that is url
+        getapi(url);
+
+        //3rd step: Now in 3rd step we have to create a function, which is using "for-loop" to iterate and add all products in html table row
+        function show(productdata) {
+            let tab = '<tr><th class="text-center">ID</th> <th class="text-center">Name</th> <th class="text-center"> Description</th>';
+            for (let r of productdata) {
+                tab += '<tr>';
+                tab += '<td>' + r.id + '</td>';
+                tab += '<td>' + r.title + '</td>';
+                tab += '<td>' + r.description + '</td>';
+            }
+            document.getElementById("tble").innerHTML = tab;
+        }
+    </script>
+</body>
+
+</html>
